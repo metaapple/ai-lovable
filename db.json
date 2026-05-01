@@ -1,0 +1,84 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "date": "2026-04-02",
+      "type": "income",
+      "category": "급여",
+      "memo": "4월 월급",
+      "amount": 3200000
+    },
+    {
+      "id": 2,
+      "date": "2026-04-05",
+      "type": "expense",
+      "category": "식비",
+      "memo": "마트 장보기",
+      "amount": 85000
+    },
+    {
+      "id": 3,
+      "date": "2026-04-08",
+      "type": "expense",
+      "category": "교통",
+      "memo": "지하철 충전",
+      "amount": 50000
+    },
+    {
+      "id": 4,
+      "date": "2026-04-10",
+      "type": "expense",
+      "category": "주거",
+      "memo": "월세",
+      "amount": 700000
+    },
+    {
+      "id": 5,
+      "date": "2026-04-12",
+      "type": "expense",
+      "category": "여가",
+      "memo": "영화관람",
+      "amount": 28000
+    },
+    {
+      "id": 6,
+      "date": "2026-04-15",
+      "type": "income",
+      "category": "부수입",
+      "memo": "프리랜서",
+      "amount": 450000
+    },
+    {
+      "id": 7,
+      "date": "2026-04-18",
+      "type": "expense",
+      "category": "식비",
+      "memo": "외식",
+      "amount": 62000
+    },
+    {
+      "id": 8,
+      "date": "2026-04-20",
+      "type": "expense",
+      "category": "쇼핑",
+      "memo": "의류",
+      "amount": 130000
+    },
+    {
+      "type": "expense",
+      "category": "주거",
+      "amount": 1000,
+      "date": "2026-04-08",
+      "memo": "관리비",
+      "id": 10
+    },
+    {
+      "type": "expense",
+      "category": "교통",
+      "amount": 1000,
+      "date": "2026-05-01",
+      "memo": "버스비",
+      "id": 11
+    }
+  ]
+}
