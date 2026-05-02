@@ -1,24 +1,34 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import api from '../api/axios.js';
+import { useAuthStore } from './authStore.js';
 
-// json-server 연결 store - axios로 모든 CRUD 후 서버 재조회 → 차트/요약 자동 반영
+// json-server 연결 store - 로그인한 사용자의 거래만 관리
 export const useTransactionStore = defineStore('transactions', () => {
   const items = ref([]);
   const loading = ref(false);
   const error = ref(null);
 
-  // 필터 상태 (거래 목록 필터)
-  const filterMonth = ref(''); // 'YYYY-MM' or '' = 전체
-  const filterType = ref('all'); // 'all' | 'income' | 'expense'
+  // 필터 상태
+  const filterMonth = ref('');
+  const filterType = ref('all');
   const filterCategory = ref('all');
   const filterKeyword = ref('');
 
+  // 현재 로그인 사용자 ID 가져오기
+  const getUserId = () => {
+    const authStore = useAuthStore();
+    return authStore.user?.id ?? null;
+  };
+
   const fetchAll = async () => {
+    const userId = getUserId();
+    if (!userId) return;
+
     loading.value = true;
     error.value = null;
     try {
-      const { data } = await api.get('/transactions');
+      const { data } = await api.get('/transactions', { params: { userId } });
       items.value = data;
     } catch (e) {
       error.value = e.message;
@@ -28,13 +38,19 @@ export const useTransactionStore = defineStore('transactions', () => {
   };
 
   const addTransaction = async (payload) => {
-    await api.post('/transactions', payload);
-    await fetchAll(); // 자동 재로드
-  };
-  const updateTransaction = async (id, payload) => {
-    await api.put(`/transactions/${id}`, payload);
+    const userId = getUserId();
+    if (!userId) return;
+    await api.post('/transactions', { ...payload, userId });
     await fetchAll();
   };
+
+  const updateTransaction = async (id, payload) => {
+    const userId = getUserId();
+    if (!userId) return;
+    await api.put(`/transactions/${id}`, { ...payload, userId });
+    await fetchAll();
+  };
+
   const removeTransaction = async (id) => {
     await api.delete(`/transactions/${id}`);
     await fetchAll();
@@ -90,7 +106,7 @@ export const useTransactionStore = defineStore('transactions', () => {
     return Array.from(set).sort().reverse();
   });
 
-  // 필터링된 목록
+  // 필터링된 목록 (날짜 내림차순)
   const filteredItems = computed(() => {
     const kw = filterKeyword.value.trim().toLowerCase();
     return items.value
@@ -108,11 +124,17 @@ export const useTransactionStore = defineStore('transactions', () => {
     filterKeyword.value = '';
   };
 
+  // 로그아웃 시 데이터 초기화
+  const clearData = () => {
+    items.value = [];
+    resetFilters();
+  };
+
   return {
     items, loading, error,
     filterMonth, filterType, filterCategory, filterKeyword,
-    fetchAll, addTransaction, removeTransaction, updateTransaction,
+    fetchAll, addTransaction, removeTransaction, updateTransaction, clearData,
     totalIncome, totalExpense, balance, expenseByCategory, monthlyTrend,
-    monthlySummary, allCategories, availableMonths, filteredItems, resetFilters
+    monthlySummary, allCategories, availableMonths, filteredItems, resetFilters,
   };
 });
