@@ -2,10 +2,23 @@
 
 <br>
 
+<img width="1536" height="1024" alt="KakaoTalk_Photo_2026-05-02-10-43-41" src="https://github.com/user-attachments/assets/0169a13f-043f-4260-8f67-867923b81326" />
+
+
+<br>
+
 <img width="1392" height="985" alt="스크린샷 2026-05-01 22 32 25" src="https://github.com/user-attachments/assets/dc9dc907-560b-41c6-84dc-72ce1e08eb02" />
 
 
 <br>
+
+## 동영상 DEMO
+<p align="center">
+  <a href="https://youtu.be/u60fgGPOfDE">
+    <img src="https://img.youtube.com/vi/u60fgGPOfDE/0.jpg" width="700">
+  </a>
+</p>
+
 
 ## 기술 스택
 - Vue 3 (Composition API, `<script setup>`)
