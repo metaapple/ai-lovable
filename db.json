@@ -10,6 +10,7 @@
   "transactions": [
     {
       "id": 1,
+      "userId": 1,
       "date": "2026-04-02",
       "type": "income",
       "category": "급여",
@@ -18,6 +19,7 @@
     },
     {
       "id": 2,
+      "userId": 1,
       "date": "2026-04-05",
       "type": "expense",
       "category": "식비",
@@ -26,6 +28,7 @@
     },
     {
       "id": 3,
+      "userId": 1,
       "date": "2026-04-08",
       "type": "expense",
       "category": "교통",
@@ -34,6 +37,7 @@
     },
     {
       "id": 4,
+      "userId": 1,
       "date": "2026-04-10",
       "type": "expense",
       "category": "주거",
@@ -42,6 +46,7 @@
     },
     {
       "id": 5,
+      "userId": 1,
       "date": "2026-04-12",
       "type": "expense",
       "category": "여가",
@@ -50,6 +55,7 @@
     },
     {
       "id": 6,
+      "userId": 1,
       "date": "2026-04-15",
       "type": "income",
       "category": "부수입",
@@ -58,6 +64,7 @@
     },
     {
       "id": 7,
+      "userId": 1,
       "date": "2026-04-18",
       "type": "expense",
       "category": "식비",
@@ -66,6 +73,7 @@
     },
     {
       "id": 8,
+      "userId": 1,
       "date": "2026-04-20",
       "type": "expense",
       "category": "쇼핑",
@@ -73,20 +81,31 @@
       "amount": 130000
     },
     {
+      "id": 10,
+      "userId": 1,
       "type": "expense",
       "category": "주거",
       "amount": 1000,
       "date": "2026-04-08",
-      "memo": "관리비",
-      "id": 10
+      "memo": "관리비"
     },
     {
+      "id": 11,
+      "userId": 1,
       "type": "expense",
       "category": "교통",
       "amount": 1000,
       "date": "2026-05-01",
-      "memo": "버스비",
-      "id": 11
+      "memo": "버스비"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "date": "2026-05-02",
+      "type": "income",
+      "category": "급여",
+      "memo": "5월 월급",
+      "amount": 3200000
     }
   ]
 }
